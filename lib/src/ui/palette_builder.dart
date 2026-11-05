@@ -45,7 +45,7 @@ class PaletteBuilder {
       case 14:
         return theme.brightCyan;
       case 15:
-        return theme.white;
+        return theme.brightWhite;
     }
 
     if (colNum < 232) {
