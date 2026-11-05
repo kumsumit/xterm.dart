@@ -5,8 +5,14 @@ linter:
     prefer_function_declarations_over_variables: false
 
 analyzer:
-  plugins:
-    - dart_code_metrics
+  exclude:
+    - build/**
+    - android/**
+    - ios/**
+    - web/**
+    - windows/**
+    - macos/**
+    - linux/**
 
 dart_code_metrics:
   anti-patterns:

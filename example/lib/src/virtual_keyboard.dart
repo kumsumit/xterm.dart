@@ -71,10 +71,12 @@ class VirtualKeyboard extends TerminalInputHandler with ChangeNotifier {
 
   @override
   String? call(TerminalKeyboardEvent event) {
-    return _inputHandler.call(event.copyWith(
-      ctrl: event.ctrl || _ctrl,
-      shift: event.shift || _shift,
-      alt: event.alt || _alt,
-    ));
+    return _inputHandler.call(
+      event.copyWith(
+        ctrl: event.ctrl || _ctrl,
+        shift: event.shift || _shift,
+        alt: event.alt || _alt,
+      ),
+    );
   }
 }

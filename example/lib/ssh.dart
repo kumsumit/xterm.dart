@@ -18,10 +18,7 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return CupertinoApp(
-      title: 'xterm.dart demo',
-      home: MyHomePage(),
-    );
+    return CupertinoApp(title: 'xterm.dart demo', home: MyHomePage());
   }
 }
 
@@ -58,10 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
     terminal.write('Connected\r\n');
 
     final session = await client.shell(
-      pty: SSHPtyConfig(
-        width: terminal.viewWidth,
-        height: terminal.viewHeight,
-      ),
+      pty: SSHPtyConfig(width: terminal.viewWidth, height: terminal.viewHeight),
     );
 
     terminal.buffer.clear();
@@ -95,14 +89,12 @@ class _MyHomePageState extends State<MyHomePage> {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         middle: Text(title),
-        backgroundColor:
-            CupertinoTheme.of(context).barBackgroundColor.withOpacity(0.5),
+        backgroundColor: CupertinoTheme.of(context).barBackgroundColor
+            .withValues(alpha: 0.5),
       ),
       child: Column(
         children: [
-          Expanded(
-            child: TerminalView(terminal),
-          ),
+          Expanded(child: TerminalView(terminal)),
           VirtualKeyboardView(keyboard),
         ],
       ),

@@ -20,10 +20,7 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return CupertinoApp(
-      title: 'xterm.dart demo',
-      home: MyHomePage(),
-    );
+    return CupertinoApp(title: 'xterm.dart demo', home: MyHomePage());
   }
 }
 
@@ -59,10 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
     terminal.write('Connected\r\n');
 
     final session = await client.shell(
-      pty: SSHPtyConfig(
-        width: terminal.viewWidth,
-        height: terminal.viewHeight,
-      ),
+      pty: SSHPtyConfig(width: terminal.viewWidth, height: terminal.viewHeight),
     );
 
     terminal.buffer.clear();
@@ -76,10 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
       session.resizeTerminal(width, height, pixelWidth, pixelHeight);
     };
 
-    final mux = ZModemMux(
-      stdin: session.stdin,
-      stdout: session.stdout,
-    );
+    final mux = ZModemMux(stdin: session.stdin, stdout: session.stdout);
 
     mux.onTerminalInput = terminal.write;
     mux.onFileOffer = _handleFileOffer;
@@ -164,8 +155,8 @@ class _MyHomePageState extends State<MyHomePage> {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         middle: Text(title),
-        backgroundColor:
-            CupertinoTheme.of(context).barBackgroundColor.withOpacity(0.5),
+        backgroundColor: CupertinoTheme.of(context).barBackgroundColor
+            .withValues(alpha: 0.5),
       ),
       child: TerminalView(terminal),
     );
@@ -183,12 +174,14 @@ class WithProgress<T> extends StreamTransformerBase<List<T>, List<T>> {
 
   @override
   Stream<List<T>> bind(Stream<List<T>> stream) {
-    return stream.transform(StreamTransformer<List<T>, List<T>>.fromHandlers(
-      handleData: (List<T> data, EventSink<List<T>> sink) {
-        _progress += data.length;
-        onProgress?.call(_progress);
-        sink.add(data);
-      },
-    ));
+    return stream.transform(
+      StreamTransformer<List<T>, List<T>>.fromHandlers(
+        handleData: (List<T> data, EventSink<List<T>> sink) {
+          _progress += data.length;
+          onProgress?.call(_progress);
+          sink.add(data);
+        },
+      ),
+    );
   }
 }

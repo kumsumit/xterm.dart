@@ -18,15 +18,15 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=3.0.0 <4.0.0"
+  sdk: ">=3.13.0 <4.0.0"
 
 dependencies:
   xterm:
     path: ../
 
-  dartssh2: ^2.5.0
+  dartssh2: ^4.1.0
 
-  flutter_pty: ^0.4.0
+  flutter_pty: ^0.4.2
 
   flutter:
     sdk: flutter
@@ -47,7 +47,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  lints: ^3.0.0
+  lints: ^6.1.0
 
   dart_code_metrics: ^5.7.6
 

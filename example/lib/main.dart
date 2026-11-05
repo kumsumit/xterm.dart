@@ -42,9 +42,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final terminal = Terminal(
-    maxLines: 10000,
-  );
+  final terminal = Terminal(maxLines: 10000);
 
   final terminalController = TerminalController();
 
@@ -54,11 +52,9 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
 
-    WidgetsBinding.instance.endOfFrame.then(
-      (_) {
-        if (mounted) _startPty();
-      },
-    );
+    WidgetsBinding.instance.endOfFrame.then((_) {
+      if (mounted) _startPty();
+    });
   }
 
   void _startPty() {

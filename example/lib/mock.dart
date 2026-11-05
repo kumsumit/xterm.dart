@@ -35,9 +35,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final terminal = Terminal(
-    maxLines: 1000,
-  );
+  final terminal = Terminal(maxLines: 1000);
 
   late final MockRepl pty;
 
@@ -54,12 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
-      body: SafeArea(
-        child: TerminalView(
-          terminal,
-          backgroundOpacity: 0.7,
-        ),
-      ),
+      body: SafeArea(child: TerminalView(terminal, backgroundOpacity: 0.7)),
     );
   }
 }

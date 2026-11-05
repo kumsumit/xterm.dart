@@ -6,8 +6,8 @@ linter:
     prefer_conditional_assignment: false
 
 analyzer:
-  plugins:
-    - dart_code_metrics
+  exclude:
+    - build/**
 
 dart_code_metrics:
   anti-patterns:

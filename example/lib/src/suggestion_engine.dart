@@ -124,10 +124,7 @@ sealed class FigToken {
 sealed class FigSuggestion extends FigToken {
   final List<String> names;
 
-  const FigSuggestion({
-    required this.names,
-    super.description,
-  });
+  const FigSuggestion({required this.names, super.description});
 }
 
 class FigCommand extends FigSuggestion {
